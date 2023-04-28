@@ -8,10 +8,6 @@ load_dotenv()
 app = Flask(__name__)
 app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 app.config["MONGO_DBNAME"] = "mydatabase"
-
-
-
-print(app.config["MONGO_URI"])
 mongo = PyMongo(app)
 db = mongo.db
 
