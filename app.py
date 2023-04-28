@@ -1,10 +1,17 @@
 from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 from bson import ObjectId
+from os import environ
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
+app.config["MONGO_URI"] = environ.get('MONGO_URI')
 mongo = PyMongo(app)
+
+#route for home page and return a json response
+@app.route('/',methods=['GET'])
+def home():
+    return jsonify({'message': 'Welcome to my API'})
+
 
 # GET all users
 @app.route('/users', methods=['GET'])
