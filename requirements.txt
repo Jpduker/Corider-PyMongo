@@ -2,3 +2,4 @@
 Flask==2.3.1
 PyMongo==3.11.4
 dotenv==0.19.0
+bson==0.5.10
