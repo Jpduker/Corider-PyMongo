@@ -39,8 +39,21 @@ class Update(Resource):
         if result.modified_count == 1:
             return {'message': 'Updated successfully'}
         else:
-            return {'error': 'Not found'}, 404``
+            return {'error': 'Not found'}, 404
         
-        
+class Delete(Resource):
+    def delete(self, id):
+        result = db.mycollection.delete_one({'_id': ObjectId(id)})
+        if result.deleted_count == 1:
+            return {'message': 'Deleted successfully'}
+        else:
+            return {'error': 'Not found'}, 404
+            
+api.add_resource(Create, '/create')
+api.add_resource(Read, '/read/string:id')
+api.add_resource(Update, '/update/string:id')
+api.add_resource(Delete, '/delete/string:id')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
