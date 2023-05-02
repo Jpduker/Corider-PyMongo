@@ -2,7 +2,7 @@
 
 To use Docker to run a Flask app, you will need to create a Dockerfile that specifies how to build your container. Here's an example Dockerfile:
 
-```json
+```
 FROM python:3.9-alpine
 
 WORKDIR /Corider-PyMongo
@@ -16,6 +16,7 @@ COPY . .
 EXPOSE 3000
 
 CMD [ "python", "app.py" ]
+
 ```
 
 This Dockerfile specifies the environment for building and running a Python Flask app with PyMongo. Here are the steps it follows:
@@ -32,14 +33,18 @@ So, this Dockerfile creates a container that installs the required Python packag
 
 ### Building the container:
 
-```json
+```
+
 docker build -t myflaskapp .
+
 ```
 
 ### Running the dockerized Flask app:
 
-```json
+```
+
 docker run -p 3000:3000 myflaskapp
+
 ```
 
 since we exposed port 3000 we need to map our port to docker’s 3000 port.
