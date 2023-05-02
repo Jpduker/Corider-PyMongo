@@ -138,7 +138,7 @@ class Delete(Resource):
 
 ### Binding Resource URL:
 
-```json
+```
 api.add_resource(home, '/')
 api.add_resource(Create, '/create')
 api.add_resource(Read, '/read')
