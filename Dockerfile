@@ -1,19 +1,15 @@
-FROM python:3.10-slim-buster
+FROM python:3.9-alpine
 
-# Set the working directory to /app
-WORKDIR /app
+WORKDIR /Corider-PyMongo
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+COPY requirements.txt requirements.txt
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
+RUN pip install -r requirements.txt
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+COPY . .
 
-#environment variable
-ENV NAME World
+EXPOSE 3000
 
-# Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD [ "python", "app.py" ]
+
+
